@@ -2,6 +2,7 @@ package com.wiblewobble.chocolatehaven.block.entity.slots;
 
 import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -16,6 +17,6 @@ public class CocoaFermenterFuelSlot extends SlotItemHandler {
 
     @Override
     public boolean mayPlace(ItemStack itemStack) {
-        return net.minecraftforge.common.ForgeHooks.getBurnTime(itemStack, RecipeType.SMELTING) > 0;
+        return this.menu.isFuel(itemStack) || itemStack.is(Items.BUCKET);
     }
 }
