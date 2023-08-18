@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "chocolatehaven:block/cocoa_fermenter"
+    },
+    "facing=south": {
+      "model": "chocolatehaven:block/cocoa_fermenter",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "chocolatehaven:block/cocoa_fermenter",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "chocolatehaven:block/cocoa_fermenter",
+      "y": 90
+    }
+  }
+}

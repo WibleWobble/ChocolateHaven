@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "chocolatehaven:item/fermented_cocoa_beans"
+  }
+}

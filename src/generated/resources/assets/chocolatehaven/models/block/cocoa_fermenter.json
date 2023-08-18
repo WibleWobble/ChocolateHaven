@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "chocolatehaven:block/cocoa_fermenter",
+    "side": "chocolatehaven:block/cocoa_fermenter",
+    "front": "chocolatehaven:block/cocoa_fermenter_front"
+  }
+}
