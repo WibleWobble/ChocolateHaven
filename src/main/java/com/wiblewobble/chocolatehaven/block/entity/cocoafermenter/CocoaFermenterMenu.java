@@ -1,9 +1,9 @@
-package com.wiblewobble.chocolatehaven.screen;
+package com.wiblewobble.chocolatehaven.block.entity.cocoafermenter;
 
 import com.wiblewobble.chocolatehaven.block.entity.slots.CocoaFermenterFuelSlot;
 import com.wiblewobble.chocolatehaven.block.entity.slots.ModGenericOutputSlot;
 import com.wiblewobble.chocolatehaven.block.ModBlocks;
-import com.wiblewobble.chocolatehaven.block.entity.CocoaFermenterBlockEntity;
+import com.wiblewobble.chocolatehaven.block.entity.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

@@ -2,7 +2,7 @@ package com.wiblewobble.chocolatehaven.block;
 
 import com.wiblewobble.chocolatehaven.ChocolateHaven;
 import com.wiblewobble.chocolatehaven.block.custom.CocoaFermenterBlock;
-import com.wiblewobble.chocolatehaven.block.entity.CocoaFermenterBlockEntity;
+import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterBlockEntity;
 import com.wiblewobble.chocolatehaven.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

@@ -1,9 +1,9 @@
-package com.wiblewobble.chocolatehaven.block.entity;
+package com.wiblewobble.chocolatehaven.block.entity.cocoafermenter;
 
 import com.wiblewobble.chocolatehaven.api.Utils;
 import com.wiblewobble.chocolatehaven.api.blockentity.AbstractModBlockEntity;
+import com.wiblewobble.chocolatehaven.block.entity.ModBlockEntities;
 import com.wiblewobble.chocolatehaven.item.ModItems;
-import com.wiblewobble.chocolatehaven.screen.CocoaFermenterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;

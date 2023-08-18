@@ -1,7 +1,7 @@
 package com.wiblewobble.chocolatehaven.block.custom;
 
 import com.wiblewobble.chocolatehaven.api.blockentity.AbstractModBaseEntityBlock;
-import com.wiblewobble.chocolatehaven.block.entity.CocoaFermenterBlockEntity;
+import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterBlockEntity;
 import com.wiblewobble.chocolatehaven.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;

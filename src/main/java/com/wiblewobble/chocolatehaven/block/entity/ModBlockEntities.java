@@ -2,6 +2,7 @@ package com.wiblewobble.chocolatehaven.block.entity;
 
 import com.wiblewobble.chocolatehaven.ChocolateHaven;
 import com.wiblewobble.chocolatehaven.block.ModBlocks;
+import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

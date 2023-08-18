@@ -1,6 +1,7 @@
-package com.wiblewobble.chocolatehaven.screen;
+package com.wiblewobble.chocolatehaven.block.entity;
 
 import com.wiblewobble.chocolatehaven.ChocolateHaven;
+import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterMenu;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;

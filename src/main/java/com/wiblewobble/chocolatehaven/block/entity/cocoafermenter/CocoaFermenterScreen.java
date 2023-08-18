@@ -1,7 +1,8 @@
-package com.wiblewobble.chocolatehaven.screen;
+package com.wiblewobble.chocolatehaven.block.entity.cocoafermenter;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.wiblewobble.chocolatehaven.ChocolateHaven;
+import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;

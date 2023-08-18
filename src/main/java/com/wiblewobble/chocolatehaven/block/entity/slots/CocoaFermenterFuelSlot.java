@@ -1,9 +1,6 @@
 package com.wiblewobble.chocolatehaven.block.entity.slots;
 
-import com.wiblewobble.chocolatehaven.screen.CocoaFermenterMenu;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.inventory.Slot;
+import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;

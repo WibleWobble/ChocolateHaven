@@ -1,6 +1,6 @@
 package com.wiblewobble.chocolatehaven.api.blockentity;
 
-import com.wiblewobble.chocolatehaven.block.entity.CocoaFermenterBlockEntity;
+import com.wiblewobble.chocolatehaven.block.entity.cocoafermenter.CocoaFermenterBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
