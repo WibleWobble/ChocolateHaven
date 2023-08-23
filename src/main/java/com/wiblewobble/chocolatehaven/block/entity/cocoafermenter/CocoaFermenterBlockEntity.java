@@ -2,9 +2,10 @@ package com.wiblewobble.chocolatehaven.block.entity.cocoafermenter;
 
 import com.wiblewobble.chocolatehaven.api.Utils;
 import com.wiblewobble.chocolatehaven.api.blockentity.AbstractModBlockEntity;
-import com.wiblewobble.chocolatehaven.block.entity.ModBlockEntities;
+import com.wiblewobble.chocolatehaven.api.blockentity.ModBlockEntitySettings;
 import com.wiblewobble.chocolatehaven.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -22,13 +23,9 @@ public class CocoaFermenterBlockEntity extends AbstractModBlockEntity implements
 
 
     public CocoaFermenterBlockEntity(BlockPos position, BlockState state) {
-        super(ModBlockEntities.COCOA_FERMENTER.get(), position, state, "Cocoa Fermenter");
-    }
-
-    @Nullable
-    @Override
-    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        return new CocoaFermenterMenu(id, inventory, this, this.data);
+        super(new ModBlockEntitySettings.Builder("chocolatehaven.test.be", position, state)
+                .addDataPoint("progress", 0)
+                .addDataPoint("maxProgress", 100).build());
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, CocoaFermenterBlockEntity entity) {
@@ -76,5 +73,15 @@ public class CocoaFermenterBlockEntity extends AbstractModBlockEntity implements
     private static boolean canOutput(SimpleContainer inventory, ItemStack stack) {
         return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount() &&
                 inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return null;
+    }
+
+    @Override
+    public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        return getMenu();
     }
 }
