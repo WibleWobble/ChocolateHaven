@@ -27,7 +27,7 @@ public class ChocolateHaven
 {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "chocolatehaven";
-    // Directly reference a slf4j logger
+    // Directly reference a slf4j logge
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public ChocolateHaven()
