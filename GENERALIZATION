@@ -1,2 +1,0 @@
-- for each blockentity have them inherit an interface i.e. (CocoaFermenter) that assures they have the same
-slot count, containerdata length, etc.

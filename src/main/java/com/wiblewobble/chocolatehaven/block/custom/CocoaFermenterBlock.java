@@ -13,11 +13,8 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
 public class CocoaFermenterBlock extends AbstractModBaseEntityBlock<CocoaFermenterBlockEntity> {
-    //TODO: MAKE A SEPARATE CLASS THAT HANDLES ALL OF THE BLOCKENTITY BOILERPLATE
-    private final Class<CocoaFermenterBlockEntity> blockEntity;
     public CocoaFermenterBlock(Class<CocoaFermenterBlockEntity> blockEntity, Properties properties) {
         super(blockEntity, properties);
-        this.blockEntity = blockEntity;
     }
 
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {

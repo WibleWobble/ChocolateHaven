@@ -10,6 +10,8 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -26,7 +28,22 @@ import java.util.Map;
 public abstract class AbstractModBlockEntity extends BlockEntity implements MenuProvider {
 
     private final BlockEntityType<?> type;
-    private final ItemStackHandler itemStackHandler;
+    private final ItemStackHandler itemStackHandler = new ItemStackHandler(3) { //TODO: UNHARDCODE
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+        }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return switch (slot) {
+                case 0 -> stack.getItem() == Items.COCOA_BEANS;
+                case 1 -> stack.getItem() == Items.COAL;
+                case 2 -> false;
+                default -> super.isItemValid(slot, stack);
+            };
+        }
+    };
     private final Map<Direction, LazyOptional<WrappedHandler>> sidedInventoryConfigs;
     private LazyOptional<IItemHandler> lazyItemHandler;
     protected final ContainerData data;
@@ -36,7 +53,6 @@ public abstract class AbstractModBlockEntity extends BlockEntity implements Menu
     public AbstractModBlockEntity(ModBlockEntitySettings settings) {
         super(settings.type, settings.position, settings.state);
         this.type = settings.type;
-        this.itemStackHandler = settings.itemStackHandler;
         this.sidedInventoryConfigs = settings.sidedInventoryConfigs;
         this.lazyItemHandler = settings.lazyItemHandler;
         this.data = settings.data;
@@ -59,19 +75,21 @@ public abstract class AbstractModBlockEntity extends BlockEntity implements Menu
             if (side == null) {
                 return lazyItemHandler.cast();
             }
-            if (sidedInventoryConfigs.containsKey(side)) {
-                Direction localDir = this.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
+            if (sidedInventoryConfigs != null) {
+                if (sidedInventoryConfigs.containsKey(side)) {
+                    Direction localDir = this.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
 
-                if (side == Direction.UP || side == Direction.DOWN) {
-                    return sidedInventoryConfigs.get(side).cast();
+                    if (side == Direction.UP || side == Direction.DOWN) {
+                        return sidedInventoryConfigs.get(side).cast();
+                    }
+
+                    return switch (localDir) {
+                        default -> sidedInventoryConfigs.get(side.getOpposite()).cast();
+                        case EAST -> sidedInventoryConfigs.get(side.getClockWise()).cast();
+                        case SOUTH -> sidedInventoryConfigs.get(side).cast();
+                        case WEST -> sidedInventoryConfigs.get(side.getCounterClockWise()).cast();
+                    };
                 }
-
-                return switch (localDir) {
-                    default -> sidedInventoryConfigs.get(side.getOpposite()).cast();
-                    case EAST -> sidedInventoryConfigs.get(side.getClockWise()).cast();
-                    case SOUTH -> sidedInventoryConfigs.get(side).cast();
-                    case WEST -> sidedInventoryConfigs.get(side.getCounterClockWise()).cast();
-                };
             }
         }
 

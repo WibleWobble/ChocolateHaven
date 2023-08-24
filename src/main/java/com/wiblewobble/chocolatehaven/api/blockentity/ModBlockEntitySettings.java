@@ -18,7 +18,6 @@ import java.util.function.Predicate;
 
 public class ModBlockEntitySettings {
     protected BlockEntityType<?> type;
-    protected ItemStackHandler itemStackHandler;
     protected Map<Direction, LazyOptional<WrappedHandler>> sidedInventoryConfigs;
     protected LazyOptional<IItemHandler> lazyItemHandler;
     protected ContainerData data;
@@ -29,7 +28,6 @@ public class ModBlockEntitySettings {
 
     private ModBlockEntitySettings(Builder builder) {
         this.type = builder.type;
-        this.itemStackHandler = builder.itemStackHandler;
         this.sidedInventoryConfigs = builder.sidedInventoryConfigs;
         this.lazyItemHandler = builder.lazyItemHandler;
         this.data = builder.data;
@@ -41,18 +39,18 @@ public class ModBlockEntitySettings {
     public static class Builder {
 
         protected BlockEntityType<?> type;
-        protected ItemStackHandler itemStackHandler;
         protected Map<Direction, LazyOptional<WrappedHandler>> sidedInventoryConfigs;
         protected LazyOptional<IItemHandler> lazyItemHandler;
         protected ContainerData data;
         protected String name;
-        protected ArrayList<DataEntry> dataPoints;
+        protected ArrayList<DataEntry> dataPoints = new ArrayList<>();
         protected AbstractContainerMenu menu;
         protected BlockPos position;
         protected BlockState state;
 
-        public Builder(String name, BlockPos position, BlockState state) {
+        public Builder(String name, BlockEntityType<?> type, BlockPos position, BlockState state) {
             this.name = name;
+            this.type = type;
             this.position = position;
             this.state = state;
         }
@@ -87,11 +85,11 @@ public class ModBlockEntitySettings {
             dataPoints.add(new DataEntry(name, defaultValue));
             return this;
         }
-        public Builder addSidedInventory(Direction side,
+        public Builder addSidedInventory(ItemStackHandler handler, Direction side,
                                          Predicate<Integer> output,
                                          BiPredicate<Integer, ItemStack> input) {
             sidedInventoryConfigs.put(side, LazyOptional.of(
-                    () -> new WrappedHandler(itemStackHandler, output, input)));
+                    () -> new WrappedHandler(handler, output, input)));
             return this;
         }
         public Builder menu(AbstractContainerMenu menu) {
@@ -99,7 +97,7 @@ public class ModBlockEntitySettings {
             return this;
         }
 
-        private class DataEntry {
+        public static class DataEntry {
             private String name;
             private int value;
             public DataEntry(String name, int value) {

@@ -3,6 +3,7 @@ package com.wiblewobble.chocolatehaven.block.entity.cocoafermenter;
 import com.wiblewobble.chocolatehaven.api.Utils;
 import com.wiblewobble.chocolatehaven.api.blockentity.AbstractModBlockEntity;
 import com.wiblewobble.chocolatehaven.api.blockentity.ModBlockEntitySettings;
+import com.wiblewobble.chocolatehaven.block.entity.ModBlockEntities;
 import com.wiblewobble.chocolatehaven.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -23,7 +24,7 @@ public class CocoaFermenterBlockEntity extends AbstractModBlockEntity implements
 
 
     public CocoaFermenterBlockEntity(BlockPos position, BlockState state) {
-        super(new ModBlockEntitySettings.Builder("chocolatehaven.test.be", position, state)
+        super(new ModBlockEntitySettings.Builder("cocoa_fermenter", ModBlockEntities.COCOA_FERMENTER.get(), position, state)
                 .addDataPoint("progress", 0)
                 .addDataPoint("maxProgress", 100).build());
     }

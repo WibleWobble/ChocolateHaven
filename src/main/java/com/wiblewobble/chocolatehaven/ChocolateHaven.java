@@ -18,6 +18,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -35,10 +36,11 @@ public class ChocolateHaven
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
+        modEventBus.addListener(this::commonSetup);
 
         ModItems.registerRegistry(modEventBus);
-        ModBlocks.registerRegistry(modEventBus);
         ModBlockEntities.registerRegistry(modEventBus);
+        ModBlocks.registerRegistry(modEventBus);
         ModCreativeTab.registerRegistry(modEventBus);
         ModMenuTypes.registerRegistry(modEventBus);
         ModRecipes.registerRegistry(modEventBus);
@@ -62,5 +64,9 @@ public class ChocolateHaven
 
             MenuScreens.register(ModMenuTypes.COCOA_FERMENTER_MENU.get(), CocoaFermenterScreen::new);
         }
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+
     }
 }
