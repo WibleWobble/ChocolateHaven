@@ -22,7 +22,6 @@ public class ModBlockEntitySettings {
     protected LazyOptional<IItemHandler> lazyItemHandler;
     protected ContainerData data;
     protected String name;
-    protected AbstractContainerMenu menu;
     protected BlockPos position;
     protected BlockState state;
 
@@ -32,7 +31,6 @@ public class ModBlockEntitySettings {
         this.lazyItemHandler = builder.lazyItemHandler;
         this.data = builder.data;
         this.name = builder.name;
-        this.menu = builder.menu;
         this.position = builder.position;
         this.state = builder.state;
     }
@@ -44,7 +42,6 @@ public class ModBlockEntitySettings {
         protected ContainerData data;
         protected String name;
         protected ArrayList<DataEntry> dataPoints = new ArrayList<>();
-        protected AbstractContainerMenu menu;
         protected BlockPos position;
         protected BlockState state;
 
@@ -90,10 +87,6 @@ public class ModBlockEntitySettings {
                                          BiPredicate<Integer, ItemStack> input) {
             sidedInventoryConfigs.put(side, LazyOptional.of(
                     () -> new WrappedHandler(handler, output, input)));
-            return this;
-        }
-        public Builder menu(AbstractContainerMenu menu) {
-            this.menu = menu;
             return this;
         }
 

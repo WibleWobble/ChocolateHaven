@@ -39,10 +39,10 @@ public class ChocolateHaven
         modEventBus.addListener(this::commonSetup);
 
         ModItems.registerRegistry(modEventBus);
+        ModMenuTypes.registerRegistry(modEventBus);
         ModBlockEntities.registerRegistry(modEventBus);
         ModBlocks.registerRegistry(modEventBus);
         ModCreativeTab.registerRegistry(modEventBus);
-        ModMenuTypes.registerRegistry(modEventBus);
         ModRecipes.registerRegistry(modEventBus);
 
         // Register ourselves for server and other game events we are interested in

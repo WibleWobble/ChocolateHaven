@@ -7,10 +7,11 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class AbstractModContainerMenu extends AbstractContainerMenu {
+public abstract class AbstractModContainerMenu extends AbstractContainerMenu {
 
-    protected AbstractModContainerMenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
+    protected AbstractModContainerMenu(@Nullable MenuType<?> pMenuType, int pContainerId, int inventorySlotCount) {
         super(pMenuType, pContainerId);
+        this.TE_INVENTORY_SLOT_COUNT = inventorySlotCount;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -29,7 +30,7 @@ public class AbstractModContainerMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+    private int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
@@ -65,7 +66,5 @@ public class AbstractModContainerMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player pPlayer) {
-        return false;
-    }
+    public abstract boolean stillValid(Player pPlayer);
 }

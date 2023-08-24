@@ -26,7 +26,7 @@ public class CocoaFermenterMenu extends AbstractModContainerMenu {
         this(id, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
     public CocoaFermenterMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.COCOA_FERMENTER_MENU.get(), id);
+        super(ModMenuTypes.COCOA_FERMENTER_MENU.get(), id, 3);
         checkContainerSize(inv, 3);
         blockEntity = (CocoaFermenterBlockEntity) entity;
         this.level = inv.player.level();

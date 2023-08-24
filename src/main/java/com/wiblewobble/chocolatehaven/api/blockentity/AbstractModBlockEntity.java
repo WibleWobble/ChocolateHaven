@@ -48,7 +48,6 @@ public abstract class AbstractModBlockEntity extends BlockEntity implements Menu
     private LazyOptional<IItemHandler> lazyItemHandler;
     protected final ContainerData data;
     private final String name;
-    private final AbstractContainerMenu menu;
 
     public AbstractModBlockEntity(ModBlockEntitySettings settings) {
         super(settings.type, settings.position, settings.state);
@@ -57,12 +56,11 @@ public abstract class AbstractModBlockEntity extends BlockEntity implements Menu
         this.lazyItemHandler = settings.lazyItemHandler;
         this.data = settings.data;
         this.name = settings.name;
-        this.menu = settings.menu;
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable(name);
+        return Component.literal(name);
     }
 
     @Nullable
@@ -132,10 +130,4 @@ public abstract class AbstractModBlockEntity extends BlockEntity implements Menu
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
-
-    public AbstractContainerMenu getMenu() {
-        return menu;
-    }
-
-
 }

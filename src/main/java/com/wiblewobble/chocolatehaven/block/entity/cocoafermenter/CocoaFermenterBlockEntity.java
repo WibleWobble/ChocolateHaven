@@ -4,6 +4,7 @@ import com.wiblewobble.chocolatehaven.api.Utils;
 import com.wiblewobble.chocolatehaven.api.blockentity.AbstractModBlockEntity;
 import com.wiblewobble.chocolatehaven.api.blockentity.ModBlockEntitySettings;
 import com.wiblewobble.chocolatehaven.block.entity.ModBlockEntities;
+import com.wiblewobble.chocolatehaven.block.entity.ModMenuTypes;
 import com.wiblewobble.chocolatehaven.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -78,11 +79,11 @@ public class CocoaFermenterBlockEntity extends AbstractModBlockEntity implements
 
     @Override
     public Component getDisplayName() {
-        return null;
+        return Component.literal("test");
     }
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return getMenu();
+        return new CocoaFermenterMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 }
